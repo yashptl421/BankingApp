@@ -1,0 +1,3 @@
+insert into account_types ("ID", "ACCOUNT_NAME", "INTEREST_RATE", "DEPOSIT_LIMIT", "AMOUNT_LIMIT") values (1, 'Sweep Fixed Account', 7.6 ,5000000,50000);
+insert into account_types ("ID", "ACCOUNT_NAME", "INTEREST_RATE", "DEPOSIT_LIMIT", "AMOUNT_LIMIT") values (2, 'Sweep Fixed Account', 7.6 ,5000000,50000);
+insert into account_types ("ID", "ACCOUNT_NAME", "INTEREST_RATE", "DEPOSIT_LIMIT", "AMOUNT_LIMIT") values (3, 'Sweep Fixed Account', 7.6 ,5000000,50000);
