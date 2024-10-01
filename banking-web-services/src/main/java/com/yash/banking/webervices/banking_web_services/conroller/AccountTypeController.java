@@ -3,6 +3,8 @@ package com.yash.banking.webervices.banking_web_services.conroller;
 import com.yash.banking.webervices.banking_web_services.dto.AccountTypes;
 import com.yash.banking.webervices.banking_web_services.exceptions.AccountTypeNotFoundException;
 import com.yash.banking.webervices.banking_web_services.service.AccountTypeService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -14,17 +16,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Locale;
 
+
+@Slf4j
+@RequiredArgsConstructor
 @RestController
 public class AccountTypeController {
 
-    @Autowired
-    private AccountTypeService accountTypeService;
+    private final AccountTypeService accountTypeService;
 
-    @GetMapping("/banking/accountTypes/{id}")
-    public ResponseEntity<AccountTypes>  getAccountType(@PathVariable int id) {
+    @GetMapping("/accountTypes/{id}")
+    public ResponseEntity<AccountTypes> getAccountType(@PathVariable Long id) {
         AccountTypes accountType = accountTypeService.getAccountType(id);
-        if(accountType==null)
-            throw new AccountTypeNotFoundException("ID" +id);
+        if (accountType == null)
+            throw new AccountTypeNotFoundException("ID" + id);
 
         return new ResponseEntity<>(accountType, HttpStatus.OK);
     }
@@ -36,7 +40,7 @@ public class AccountTypeController {
     }
 
     @PostMapping("/banking/addAccountType")
-    public void addAccountType(@RequestBody AccountTypes accountType){
+    public void addAccountType(@RequestBody AccountTypes accountType) {
         accountTypeService.addAccountTypes(accountType);
     }
 }
