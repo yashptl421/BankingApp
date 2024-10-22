@@ -20,11 +20,12 @@ import java.util.Locale;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/accountsTypes")
 public class AccountTypeController {
 
     private final AccountTypeService accountTypeService;
 
-    @GetMapping("/accountTypes/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<AccountTypes> getAccountType(@PathVariable Long id) {
         AccountTypes accountType = accountTypeService.getAccountType(id);
         if (accountType == null)
@@ -33,7 +34,7 @@ public class AccountTypeController {
         return new ResponseEntity<>(accountType, HttpStatus.OK);
     }
 
-    @GetMapping("/banking/accountTypes")
+    @GetMapping("/allAccountTypes")
     public ResponseEntity<List<AccountTypes>> getAllAccountType() {
         List<AccountTypes> accountTypes = accountTypeService.getAllAccountTypes();
         return new ResponseEntity<>(accountTypes, HttpStatus.OK);

@@ -31,8 +31,21 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<CustomerResponse> readByCustomerId(@RequestParam Long customerId){
+    public ResponseEntity<CustomerResponse> readByCustomerId(@RequestParam Long customerId) {
         log.info("read customer with: {}", customerId);
         return ResponseEntity.ok(customerService.readByCustomerId(customerId));
+    }
+
+    @PutMapping
+    public ResponseEntity<CustomerResponse> updateCustomer(@RequestBody CustomerRequest request) {
+        log.info("updating customer with: {}", request.getCustomerId());
+        return ResponseEntity.ok(customerService.updateCustomer(request));
+    }
+
+    @DeleteMapping
+    public Response deleteCustomer(@RequestBody CustomerRequest request){
+        log.info("delete customer with: {}", request.getCustomerId());
+        customerService.deleteCustomer(request);
+        return new Response("200","customer deleted successfully");
     }
 }

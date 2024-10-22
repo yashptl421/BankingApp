@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-cloud-config-server</name>
 	<description>All configuration for Banking app</description>
+	<packaging>jar</packaging>
 	<url/>
 	<licenses>
 		<license/>

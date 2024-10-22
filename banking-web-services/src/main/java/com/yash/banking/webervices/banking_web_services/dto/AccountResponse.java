@@ -12,7 +12,6 @@ import java.math.BigInteger;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 public class AccountResponse {
 
     private Long accountId;

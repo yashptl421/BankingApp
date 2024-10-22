@@ -22,5 +22,5 @@ public class AccountRequest {
     private BigDecimal availableBalance;
 
     private Long customerId;
-
+    
 }

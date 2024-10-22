@@ -15,7 +15,7 @@ spring:
         - id: banking-web-services
           uri: lb://banking-web-services
           predicates:
-            - Path=/account**
+            - Path=/accounts/**, /accountsTypes/**
         - id: customer-webservices
           uri: lb://customer-webservices
           predicates:

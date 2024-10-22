@@ -3,6 +3,7 @@ package com.yash.banking.webervices.banking_web_services.service;
 import com.yash.banking.webervices.banking_web_services.dto.AccountRequest;
 import com.yash.banking.webervices.banking_web_services.dto.AccountResponse;
 import com.yash.banking.webervices.banking_web_services.dto.AccountTypes;
+import com.yash.banking.webervices.banking_web_services.dto.CustomerAccountResponse;
 import com.yash.banking.webervices.banking_web_services.dto.external.CustomerResponse;
 import com.yash.banking.webervices.banking_web_services.exceptions.RecordNotFound;
 import com.yash.banking.webervices.banking_web_services.model.Account;
@@ -10,7 +11,12 @@ import com.yash.banking.webervices.banking_web_services.repository.AccountReposi
 import com.yash.banking.webervices.banking_web_services.repository.AccountTypeRepository;
 import com.yash.banking.webervices.banking_web_services.service.externalservice.CustomerService;
 import com.yash.banking.webervices.banking_web_services.utils.ObjectMapper;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -19,6 +25,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class AccountService {
 
@@ -37,7 +44,7 @@ public class AccountService {
         if (accountTypes.isEmpty())
             throw new RecordNotFound("Invalid Account Type");
         Optional<Account> acc = accountRepository.findAccountByCustomerIdAndAccTypeid(request.getCustomerId(), request.getAccTypeid());
-        if(acc.isPresent())
+        if (acc.isPresent())
             throw new RecordNotFound("Account is already exist");
         Account account = mapper.map(request, Account.class);
         account.setAccountNumber(accountSequenceService.generateAccountNumber().getAccountNumber());
@@ -49,9 +56,21 @@ public class AccountService {
         return accounts.stream().map(acc -> mapper.map(acc, AccountResponse.class)).toList();
     }
 
-    public AccountResponse getByAccountNumber(BigInteger accountNumber) {
+    @CircuitBreaker(name = "customer", fallbackMethod = "getByAccountNumberFallback")
+    public CustomerAccountResponse getByAccountNumber(BigInteger accountNumber) {
+
+        CustomerAccountResponse response = new CustomerAccountResponse();
+        ResponseEntity<CustomerResponse> customerResponse;
         Optional<Account> account = accountRepository.findByAccountNumber(accountNumber);
-        return account.map(value -> mapper.map(value, AccountResponse.class)).orElse(null);
+        if (account.isPresent())
+            customerResponse = customerService.readByCustomerId(account.get().getCustomerId());
+        else
+            throw new RecordNotFound("Account Not Found");
+        if (Objects.isNull(customerResponse.getBody()))
+            throw new RecordNotFound("Customer Not Found");
+        response.setAccountResponse(account.map(value -> mapper.map(value, AccountResponse.class)).orElse(null));
+        response.setCustomerResponse(customerResponse.getBody());
+        return response;
     }
 
     public String getBalance(BigInteger accountNumber) {
@@ -60,4 +79,7 @@ public class AccountService {
                 .orElseThrow(RecordNotFound::new);
     }
 
+    public CustomerAccountResponse getByAccountNumberFallback(Exception e) {
+        return new CustomerAccountResponse();
+    }
 }

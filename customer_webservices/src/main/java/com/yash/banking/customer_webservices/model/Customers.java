@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Entity(name = "customer_data")
@@ -18,10 +19,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Data
-public class Customers {
+public class Customers implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
     private String firstName;
     private String lastName;
