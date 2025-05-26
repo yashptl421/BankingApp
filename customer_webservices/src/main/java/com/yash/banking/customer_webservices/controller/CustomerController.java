@@ -4,6 +4,7 @@ import com.yash.banking.customer_webservices.dto.CustomerRequest;
 import com.yash.banking.customer_webservices.dto.CustomerResponse;
 import com.yash.banking.customer_webservices.dto.Response;
 import com.yash.banking.customer_webservices.services.CustomerService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class CustomerController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Response> saveCustomer(@RequestBody CustomerRequest request) {
+    public ResponseEntity<Response> saveCustomer(@RequestBody @Valid CustomerRequest request) {
         log.info("creating customer with: {}", request.toString());
         return ResponseEntity.ok(customerService.saveCustomer(request));
     }

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5248f3ff-b0d4-4bd5-8f6b-1c7fe8727730" name="Changes" comment="Yml file added">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/about" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer-webservices-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/registry-server-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/registry-server.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/configuration/KafkaCustomerRegTopicConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/handler/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/handler/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/notification/NotificationProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/notification/RegistrationNotificationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer_webservices/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/yash/banking/notification_service/email/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/yash/banking/notification_service/email/EmailTemplates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/yash/banking/notification_service/kafka/NotificationsConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/java/com/yash/banking/notification_service/kafka/customer/RegistrationConfirmation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../notification-service/src/main/resources/templates/Registration-Confirm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../spring-cloud-config-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-gateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-config-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/customer-config-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer-config-uat.properties" beforeDir="false" afterPath="$PROJECT_DIR$/customer-config-uat.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customer_webservices/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../customer_webservices/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/controller/ConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/controller/ConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/dto/CustomerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/dto/CustomerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../customer_webservices/src/main/java/com/yash/banking/customer_webservices/services/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customer_webservices/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../registry-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../registry-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../registry-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../registry-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-cloud-config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-cloud-config-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-cloud-config-server/src/main/java/com/yash/banking/spring_cloud_config_server/SpringCloudConfigServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-cloud-config-server/src/main/java/com/yash/banking/spring_cloud_config_server/SpringCloudConfigServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-cloud-config-server/src/main/resources/application.properties" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yashptl421&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://yashptl421@github.com/yashptl421/BankingApp.git",
+    "accountId": "584bdd4c-0795-4948-b8ed-41a440207e50"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2v76FwOaSX1cS4aazIrI4dIvVKx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yashpatel/Professional/Java/Workspace/BankingApp/configuration-repo&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5248f3ff-b0d4-4bd5-8f6b-1c7fe8727730" name="Changes" comment="" />
+      <created>1743483664416</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743483664416</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Yml file added">
+      <option name="closed" value="true" />
+      <created>1747216156767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747216156767</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Yml file added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Yml file added" />
+  </component>
+</project>

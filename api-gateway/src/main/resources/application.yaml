@@ -1,6 +1,5 @@
 server:
   port: 8765
-
 eureka:
   client:
     service-url:
@@ -11,6 +10,9 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: banking-web-services
           uri: lb://banking-web-services
@@ -20,3 +22,7 @@ spring:
           uri: lb://customer-webservices
           predicates:
             - Path=/api/customer/**
+        - id: customer-config-webservices
+          uri: lb://customer-webservices
+          predicates:
+            - Path=/api/conf/**
