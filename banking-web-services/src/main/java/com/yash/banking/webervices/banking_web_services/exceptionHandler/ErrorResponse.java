@@ -1,39 +1,27 @@
 package com.yash.banking.webervices.banking_web_services.exceptionHandler;
 
-import java.time.LocalDateTime;
+import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.util.Map;
+
+@Data
 public class ErrorResponse {
     private LocalDateTime dateTime;
     private String message;
-    private String discription;
+    private String description;
+    Map<String, String> errors;
 
-    public ErrorResponse(LocalDateTime dateTime, String message, String discription) {
+    public ErrorResponse(LocalDateTime dateTime, String message, String description) {
         this.dateTime = dateTime;
         this.message = message;
-        this.discription = discription;
+        this.description = description;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public ErrorResponse(Map<String, String> errors) {
+        this.errors = errors;
     }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getDiscription() {
-        return discription;
-    }
-
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public ErrorResponse(LocalDateTime dateTime, String message, String description, Map<String, String> errors) {
+        this.errors = errors;
     }
 }

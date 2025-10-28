@@ -4,7 +4,8 @@ import lombok.Getter;
 
 public enum EmailTemplates {
 
-    REGISTRATION_CONFIRMATION("Registration-Confirm.html", "Registration successfully completed");
+    REGISTRATION_CONFIRMATION("Registration-Confirm.html", "Registration successfully completed"),
+    ACCOUNT_CONFIRMATION("Account-Confirm.html","Account created successfully");
 
     @Getter
     private final String template;

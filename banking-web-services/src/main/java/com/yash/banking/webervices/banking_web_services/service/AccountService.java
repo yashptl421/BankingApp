@@ -7,6 +7,8 @@ import com.yash.banking.webervices.banking_web_services.dto.CustomerAccountRespo
 import com.yash.banking.webervices.banking_web_services.dto.external.CustomerResponse;
 import com.yash.banking.webervices.banking_web_services.exceptions.RecordNotFound;
 import com.yash.banking.webervices.banking_web_services.model.Account;
+import com.yash.banking.webervices.banking_web_services.notification.AccountCreatedRequest;
+import com.yash.banking.webervices.banking_web_services.notification.NotificationProducer;
 import com.yash.banking.webervices.banking_web_services.repository.AccountRepository;
 import com.yash.banking.webervices.banking_web_services.repository.AccountTypeRepository;
 import com.yash.banking.webervices.banking_web_services.service.externalservice.CustomerService;
@@ -34,7 +36,7 @@ public class AccountService {
     private final AccountTypeRepository accountTypeRepository;
     private final ObjectMapper mapper;
     private final AccountSequenceService accountSequenceService;
-
+    private final NotificationProducer notificationProducer;
     public BigInteger createAccount(AccountRequest request) {
         CustomerResponse customerResponse = customerService.readByCustomerId(request.getCustomerId()).getBody();
         if (Objects.isNull(customerResponse)) {
@@ -48,7 +50,18 @@ public class AccountService {
             throw new RecordNotFound("Account is already exist");
         Account account = mapper.map(request, Account.class);
         account.setAccountNumber(accountSequenceService.generateAccountNumber().getAccountNumber());
-        return accountRepository.save(account).getAccountNumber();
+        BigInteger accNumber = accountRepository.save(account).getAccountNumber();
+
+        //Email notification needs to send for account created confirmation.
+        AccountCreatedRequest accountCreatedRequest = new AccountCreatedRequest(
+                customerResponse.getFirstName(),
+                customerResponse.getLastName(),
+                customerResponse.getEmailId(),
+                accountTypes.get().getAccountName(),
+                accNumber
+                );
+        notificationProducer.sendNotification(accountCreatedRequest);
+        return accNumber;
     }
 
     public List<AccountResponse> allAccounts() {

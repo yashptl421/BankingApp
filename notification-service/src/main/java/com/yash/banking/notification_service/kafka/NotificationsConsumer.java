@@ -1,6 +1,7 @@
 package com.yash.banking.notification_service.kafka;
 
 import com.yash.banking.notification_service.email.EmailService;
+import com.yash.banking.notification_service.kafka.account.AccountConfirmation;
 import com.yash.banking.notification_service.kafka.customer.RegistrationConfirmation;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
@@ -22,5 +23,13 @@ public class NotificationsConsumer {
                 registrationConfirmation.customerId(),
                 registrationConfirmation.aadharNumber()
         );
+    }
+    @KafkaListener(topics = "account-topic", groupId = "accountGroup")
+    public void consumeAccountConfirmNotifications(AccountConfirmation accountConfirmation) throws MessagingException {
+        var customerName = accountConfirmation.getCustomerFirstname()+" "+accountConfirmation.getCustomerLastname();
+        emailService.sendAccountCreatedSuccessEmail(accountConfirmation.getCustomerEmail(),
+                customerName,
+                accountConfirmation.getAccountType(),
+                accountConfirmation.getAccountNumber());
     }
 }

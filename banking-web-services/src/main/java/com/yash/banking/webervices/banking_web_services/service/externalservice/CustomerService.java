@@ -19,5 +19,5 @@ public interface CustomerService {
     @GetMapping("/api/customer/allCustomers")
     ResponseEntity<List<CustomerResponse>> getAllCustomer();
     @GetMapping("/api/customer")
-    ResponseEntity<CustomerResponse> readByCustomerId(@RequestParam Long customerId);
+    ResponseEntity<CustomerResponse> readByCustomerId(@RequestParam Long customerId) ;
 }

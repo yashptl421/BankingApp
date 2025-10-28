@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.yash.banking.spring_cloud_config_server.SpringCloudConfi
+ gServerApplication
+

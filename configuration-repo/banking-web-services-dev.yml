@@ -1,0 +1,69 @@
+# Spring security
+server:
+  port: 8085
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  security:
+    user:
+      name: ypatel
+      password: ypatel
+  #Spring in memory database H2 configuration
+  #spring.datasource.url=jdbc:h2:mem:testdb
+
+  #Mysql db configuration
+  datasource:
+    url: jdbc:mysql://localhost:3307/banking_service_database
+    username: root
+    password: ypatel
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
+    show-sql: true
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: accountConfirmation:com.yash.banking.webervices.banking_web_services.notification.AccountCreatedRequest
+  #eureka client configuration
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      groupA:
+        sliding-window-type: COUNT_BASED
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 10
+        sliding-window-size: 10
+        register-health-indicator: true
+        ignoreExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.util.concurrent.TimeoutException
+          - java.io.IOException
+    instances:
+      customer-webservices:
+        base-config: groupA
+  ratelimiter:
+    instances:
+      balanceLimiter:
+        limitForPeriod: 2        # max 2 calls 
+        limitRefreshPeriod: 10s  # every 10 seconds
+        timeoutDuration: 0       # no waiting
