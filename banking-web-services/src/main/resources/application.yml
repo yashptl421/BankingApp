@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: banking-web-services
+  #Configuration config Server
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      profile: dev

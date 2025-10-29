@@ -1,0 +1,24 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: spring-cloud-config-server
+  profiles:
+    active: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///Users/yashpatel/Professional/Java/Workspace/BankingApp/configuration-repo
+          skipSslValidation: true
+          default-label: master
+          clone-on-start: true
+         # search-paths: config
+      profile: dev
+  #eureka client configuration
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

@@ -1,0 +1,25 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: customerGroup, accountGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+        spring.json.type.mapping: registrationConfirmation:com.yash.banking.notification_service.kafka.customer.RegistrationConfirmation,accountConfirmation:com.yash.banking.notification_service.kafka.account.AccountConfirmation
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: yashptl421@gmail.com
+    password: fgmzcraurpgcrpey
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+      connectiontimeout: 5000
+      timeout: 3000
+      writetimeout: 5000
+email:
+  fromEmail: yashptl421@gmail.com
